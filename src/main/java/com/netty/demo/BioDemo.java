@@ -9,6 +9,11 @@ import java.util.concurrent.Executors;
 
 public class BioDemo {
 
+    /**
+     * bio就是一个连接分配一个线程
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         final ExecutorService executorService = Executors.newCachedThreadPool();
 
@@ -19,11 +24,10 @@ public class BioDemo {
             final Socket accept = serverSocket.accept();
 
             System.out.println("客户端链接");
-            executorService.execute(() -> {
 
+            executorService.execute(() -> {
                 handler(accept);
             });
-
         }
 
     }
